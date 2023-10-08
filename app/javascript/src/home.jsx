@@ -1,11 +1,13 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import Layout from './layout';
 
 import './home.scss';
 
-const Home = props => (
-  <h1>Home page react is working</h1>
-)
+const Home = () => (
+    <Layout>
+    </Layout>
+  )
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
