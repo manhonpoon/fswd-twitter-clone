@@ -1,4 +1,20 @@
 import React from 'react';
+
+import { safeCredentialsFormData, handleErrors } from './utils/fetchHelper';
+
+let formData = new FormData();
+
+formData.set('tweet[image]', fileInputElement.files[0]);
+// Set other params in the form data.
+formData.set('tweet[message]', 'a tweet');
+
+fetch('/api/tweets', safeCredentialsFormData({
+  method: 'POST',
+  body: formData,
+}))
+.then(handleErrors)
+.then(res => {   console.log(res); })
+
 const Layout = (props) => {
   return (
     <React.Fragment>
