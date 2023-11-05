@@ -3,6 +3,7 @@ import { safeCredentialsFormData, handleErrors } from './utils/fetchHelper';
 
 const Layout = (props) => {
   const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleLogin = (event) => {
@@ -13,7 +14,7 @@ const Layout = (props) => {
     formData.set('password', password);
 
     // Perform the login fetch request here
-    fetch('/api/login', {
+    fetch('/api/sessions', {
       method: 'POST',
       body: formData,
     })
@@ -37,7 +38,7 @@ const Layout = (props) => {
     formData.set('password', password);
 
     // Perform the sign-up fetch request here
-    fetch('/api/signup', {
+    fetch('/api/users', {
       method: 'POST',
       body: formData,
     })
@@ -94,10 +95,43 @@ const Layout = (props) => {
         </form>
       </div>
 
-      {/* Sign-up form */}
+            {/* Sign-up form */}
       <div className="sign-up col-xs-4 col-xs-offset-1">
         <form onSubmit={handleSignUp}>
-          {/* Form fields */}
+          <div className="form-group">
+            <input
+              type="text"
+              className="form-control username"
+              placeholder="Username"
+              value={username}
+              onChange={(event) => setUsername(event.target.value)}
+            />
+          </div>
+          <div className="form-group">
+            <input
+              type="email"
+              className="form-control email"
+              placeholder="Email"
+              value={email}
+              onChange={(event) => setEmail(event.target.value)}
+            />
+          </div>
+          <div className="form-group">
+            <input
+              type="password"
+              className="form-control password"
+              placeholder="Password"
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
+            />
+          </div>
+          <button
+            id="sign-up-btn"
+            className="btn btn-default btn-primary col-xs-3 col-xs-offset-1"
+            type="submit"
+          >
+            Sign Up
+          </button>
         </form>
       </div>
 
