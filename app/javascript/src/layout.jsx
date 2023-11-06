@@ -33,15 +33,15 @@ const Layout = (props) => {
     event.preventDefault(); // Prevent the default form submission behavior
 
     const formData = new FormData();
-    formData.set('username', username);
-    formData.set('email', email);
-    formData.set('password', password);
+    formData.set('user[username]', username);
+    formData.set('user[email]', email);
+    formData.set('user[password]', password);
 
     // Perform the sign-up fetch request here
-    fetch('/api/users', {
+    fetch('/api/users', safeCredentialsFormData({
       method: 'POST',
       body: formData,
-    })
+    }))
       .then(response => response.json())
       .then(data => {
         console.log(data);
