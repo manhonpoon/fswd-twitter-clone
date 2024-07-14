@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   root 'static_pages#home'
+  get '/tweets' => 'static_pages#tweets'
+  get '/:username' => 'static_pages#UserPage'
 
   namespace :api do
     # USERS
